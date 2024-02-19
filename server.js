@@ -4,9 +4,12 @@ import mongoose from 'mongoose'
 	mongoose.Promise = global.Promise
 	mongoose.connect(config.mongoUri, { useNewUrlParser: true,
 	//useCreateIndex: true, 
-	useUnifiedTopology: true } )
+	useUnifiedTopology: true } ).then(() => {
+		console.log("Connected to the Marketplace database!");
+		})
+		
 	mongoose.connection.on('error', () => {
-	throw new Error(`unable to connect to database: ${mongoUri}`) 
+	throw new Error(`unable to connect to database: ${config.mongoUri}`) 
 	})
 
 app.get("/", (req, res) => {

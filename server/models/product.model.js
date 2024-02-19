@@ -1,7 +1,8 @@
 import { Double, Int32 } from 'bson'
 import mongoose from 'mongoose'
 
-const UserSchema = new mongoose.Schema({
+
+const ProductSchema = new mongoose.Schema({
     name: {
         type: String, 
         trim: true,
@@ -20,4 +21,4 @@ const UserSchema = new mongoose.Schema({
     }
 
   }) 
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('User', ProductSchema)
