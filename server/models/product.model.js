@@ -12,13 +12,27 @@ const ProductSchema = new mongoose.Schema({
         type: String, 
         required: false
         },
-    price: Double,
-    quantity: Int32,
+    price: 
+    {
+        type : Number,
+        required : [true,'a price is required'],
+        min: [0, 'Price cannot be less than 0'],
+    },
+    quantity: 
+    {
+        type: Number,
+        required : [true,'a Quantity is required'],
+        min: [0, 'Quantity cannot be less than 0'],
+        validate : {
+            validator : Number.isInteger,
+            message   : 'Quantity is not an integer value'
+          }
+    },
     category:
     {
         type: String,
-        required: [true, 'A category is requiered']
+        required: [true, 'A category is required']
     }
 
   }) 
-export default mongoose.model('User', ProductSchema)
+export default mongoose.model('Product', ProductSchema)
